@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>babylonjs + colyseus 0.10</title>
+    <script src="https://cdn.babylonjs.com/cannon.js"></script>
+    <style>
+      @font-face {
+        font-family: 'PixelArt';
+        src: URL('src/advanced_pixel-7.ttf') format('truetype');
+      }
+
+      body {
+        display: flex;
+        justify-items: center;
+        align-content: center;
+        font-family: 'PixelArt' !important;
+      }
+
+      #gameGUI {
+        position: fixed;
+        display: flex;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        pointer-events: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #messageContainer {
+        color: white;
+        font-size: 250px;
+        transition: 0.5s opacity linear;
+        opacity: 0;
+      }
+
+      .low-priority {
+        position: absolute;
+        bottom: 0;
+        font-size: 50px !important;
+      }
+
+      #dominationBar {
+        background-color: whitesmoke;
+        height: 20px;
+        width: 80vw;
+        position: absolute;
+        bottom: 10px;
+      }
+
+      #dominationBarProgress {
+        background-color: blue;
+        position: absolute;
+        z-index: 99999;
+        height: 20px;
+        width: 50%;
+      }
+
+      #lifeContainer {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 50vw;
+        display: flex;
+      }
+
+      .lifePoint {
+        height: 20px;
+        width: 20px;
+        margin: 5px;
+        border: 3px solid white;
+        border-radius: 100%;
+        background-color: red;
+      }
+
+    </style>
+
+    <script>
+        function showMessage(value, priority, time) {
+          var counter = document.getElementById("messageContainer");
+
+          counter.classList.remove("low-priority");
+
+          if(priority != 0) {
+            counter.classList.add("low-priority");
+          }
+
+          counter.innerHTML = value;
+          counter.style.opacity = 1;
+
+          if(time == -1) {
+            return;
+          }
+
+          if(!time) {
+            time = 500;
+          }
+
+          if(time > 0) {
+            setTimeout(() => {
+              counter.style.opacity = 0;
+            }, time);
+          }
+        }
+
+        function updateLife(count) {
+            var lifeContainer = document.getElementById("lifeContainer");
+            lifeContainer.innerHTML = "";
+            
+            for(i = 0; i < count; i++) {
+                var lifeTemplate = document.createElement("div");
+                lifeTemplate.classList.add("lifePoint");
+                lifeContainer.appendChild(lifeTemplate);
+            }
+        }
+    </script>
+  <link href="styles.css" rel="stylesheet"></head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="gameGUI">
+      <div id="dominationBar">
+        <div id="dominationBarProgress"></div>
+      </div>
+      <div id="lifeContainer">
+      </div>
+      <p id="messageContainer"></p>
+    </div>
+
+  <script type="text/javascript" src="bundle.js"></script></body>
+</html>

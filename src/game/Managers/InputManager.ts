@@ -1,10 +1,9 @@
 import Keycode from "keycode.js";
-import { PressedKeys } from '../../../../server/src/entities/Player';
 import GameManager from './GameManager';
 import { Vector3 } from "babylonjs";
 
 export default class InputManager { 
-    private keyboard: PressedKeys = { x: 0, y: 0 };
+    private keyboard = { x: 0, y: 0 };
     private isLocked = false;
 
     constructor(key, renderManager, gameManager: GameManager) {
