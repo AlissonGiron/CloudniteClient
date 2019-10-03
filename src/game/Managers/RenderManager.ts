@@ -45,7 +45,7 @@ export default class RenderManager {
         var skybox = BABYLON.Mesh.CreateBox("skyBox", 3000.0, this.scene);
         var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", this.scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("src/textures/skybox", this.scene);
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("../src/textures/skybox", this.scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
         skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
@@ -61,7 +61,7 @@ export default class RenderManager {
             charObj = "chr_red.obj";
         }
 
-        BABYLON.SceneLoader.ImportMesh("", "src/scenes/Char/", charObj, this.scene, (newMeshes: any) => {
+        BABYLON.SceneLoader.ImportMesh("", "../src/scenes/Char/", charObj, this.scene, (newMeshes: any) => {
 
             var moveX = -80;
 
@@ -99,12 +99,12 @@ export default class RenderManager {
         });
     };
 
-    LoadMap = () => BABYLON.SceneLoader.ImportMesh("", "src/scenes/", "cloudniteMap.obj", this.scene, (newMeshes) => {
+    LoadMap = () => BABYLON.SceneLoader.ImportMesh("", "../src/scenes/", "cloudniteMap.obj", this.scene, (newMeshes) => {
         var material = new BABYLON.StandardMaterial("material", this.scene);
-        material.diffuseTexture = new BABYLON.Texture("src/scenes/cloudniteMap.png", this.scene);
-        material.specularTexture = new BABYLON.Texture("src/scenes/cloudniteMap.png", this.scene);
-        material.emissiveTexture = new BABYLON.Texture("src/scenes/cloudniteMap.png", this.scene);
-        material.ambientTexture = new BABYLON.Texture("src/scenes/cloudniteMap.png", this.scene);
+        material.diffuseTexture = new BABYLON.Texture("../src/scenes/cloudniteMap.png", this.scene);
+        material.specularTexture = new BABYLON.Texture("../src/scenes/cloudniteMap.png", this.scene);
+        material.emissiveTexture = new BABYLON.Texture("../src/scenes/cloudniteMap.png", this.scene);
+        material.ambientTexture = new BABYLON.Texture("../src/scenes/cloudniteMap.png", this.scene);
         newMeshes[0].material = material;
     
         newMeshes[0].scaling = new BABYLON.Vector3(20, 20, 20);
@@ -126,16 +126,16 @@ export default class RenderManager {
         var material = new BABYLON.StandardMaterial("material", this.scene);
 
         if(team == Team.Blue) {
-            material.diffuseTexture = new BABYLON.Texture("src/scenes/Char/chr_blue.png", this.scene);
-            material.specularTexture = new BABYLON.Texture("src/scenes/Char/chr_blue.png", this.scene);
-            material.emissiveTexture = new BABYLON.Texture("src/scenes/Char/chr_blue.png", this.scene);
-            material.ambientTexture = new BABYLON.Texture("src/scenes/Char/chr_blue.png", this.scene);
+            material.diffuseTexture = new BABYLON.Texture("../src/scenes/Char/chr_blue.png", this.scene);
+            material.specularTexture = new BABYLON.Texture("../src/scenes/Char/chr_blue.png", this.scene);
+            material.emissiveTexture = new BABYLON.Texture("../src/scenes/Char/chr_blue.png", this.scene);
+            material.ambientTexture = new BABYLON.Texture("../src/scenes/Char/chr_blue.png", this.scene);
         }
         else {
-            material.diffuseTexture = new BABYLON.Texture("src/scenes/Char/chr_red.png", this.scene);
-            material.specularTexture = new BABYLON.Texture("src/scenes/Char/chr_red.png", this.scene);
-            material.emissiveTexture = new BABYLON.Texture("src/scenes/Char/chr_red.png", this.scene);
-            material.ambientTexture = new BABYLON.Texture("src/scenes/Char/chr_red.png", this.scene);
+            material.diffuseTexture = new BABYLON.Texture("../src/scenes/Char/chr_red.png", this.scene);
+            material.specularTexture = new BABYLON.Texture("../src/scenes/Char/chr_red.png", this.scene);
+            material.emissiveTexture = new BABYLON.Texture("../src/scenes/Char/chr_red.png", this.scene);
+            material.ambientTexture = new BABYLON.Texture("../src/scenes/Char/chr_red.png", this.scene);
         }
 
         return material;
